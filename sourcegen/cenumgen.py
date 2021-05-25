@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ## SourceObject ##
 #################################################################
 #
@@ -24,12 +24,12 @@
 # Enum-specific C code generation objects
 #
 #################################################################
-from cobjectgen import *
-from cfunctiongen import *
-from cmacrogen import *
-from cstructgen import *
+from .cobjectgen import *
+from .cfunctiongen import *
+from .cmacrogen import *
+from .cstructgen import *
 import sys
-import util
+from . import util
 
 
 class CEnumFindByValueHelper(CFunctionGenerator):
@@ -309,7 +309,7 @@ class CEnumGenerator(CObjectGenerator):
             elif type(m) == dict:
                 if len(m.keys()) != 1:
                     raise Exception("Malformed dict for enum member: m")
-                for (k,v) in m.iteritems():
+                for (k,v) in m.items():
                     if type(v) is dict:
                         # Assumed this is just the member data.
                         nmember.name = k
@@ -620,4 +620,4 @@ if __name__ == "__main__":
     e = CEnumGenerator(name="testEnum", members=[ ['member1'], ['member2'],
                                                   ['member3']])
 
-    print e.Define()
+    print(e.Define())

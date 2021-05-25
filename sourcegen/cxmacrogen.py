@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ## SourceObject ##
 #################################################################
 #
@@ -25,8 +25,8 @@
 #
 #################################################################
 
-from cobjectgen import *
-import util
+from .cobjectgen import *
+from . import util
 
 class CXMacroGenerator(CObjectGenerator):
     objectType = 'xmacro'
@@ -102,7 +102,7 @@ class CXMacroGenerator(CObjectGenerator):
 # Sanity Check
 #
 ###############################################################################
-import cm
+from . import cm
 
 if __name__ == "__main__":
 
@@ -112,11 +112,11 @@ if __name__ == "__main__":
                           'ENTRY4', ] }
 
     m = CXMacroGenerator(name='MY_XMACRO', initargs=data);
-    print m.Define()
+    print(m.Define())
 
 
     data = { 'members' : [ [ 'E01', 'E02', 'E03' ],
                            [ 'E11', 'E12', 'E13' ],
                            [ 'E21', 'E22', 'E23' ] ] }
     m = CXMacroGenerator(name='MY_XMACRO2', initargs=data)
-    print m.Define()
+    print(m.Define())

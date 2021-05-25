@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ## SourceObject ##
 #################################################################
 #
@@ -25,8 +25,8 @@
 #
 #################################################################
 
-from cobjectgen import *
-import util
+from .cobjectgen import *
+from . import util
 
 #Fixme
 _typemap = {
@@ -53,7 +53,7 @@ class CVarGenerator(CObjectGenerator):
         return "%s%s %s;\n" % (self.f.Static() + "_" if self.static else "",
                                self._varname)
     def name(self):
-        return _varname
+        return self._varname
 
     def __str__(self):
         return self.name()

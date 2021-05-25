@@ -1,9 +1,10 @@
+#!/usr/bin/python3
 #################################################################
 #
 #        Copyright 2013, Big Switch Networks, Inc.
 #
 # Licensed under the Eclipse Public License, Version 1.0 (the
-# "License"); you may not use this file except in compliance
+# "License") you may not use this file except in compliance
 # with the License. You may obtain a copy of the License at
 #
 #        http://www.eclipse.org/legal/epl-v10.html
@@ -27,9 +28,9 @@
 # Derive from this class to specify different formatting behavior
 #
 #################################################################
-from sourceformatter import *
+from .sourceformatter import *
 import re
-import util
+from . import util
 
 class CKNFSourceFormatter(SourceFormatter):
 
@@ -69,11 +70,11 @@ class CKNFSourceFormatter(SourceFormatter):
 
     def GlobalVariable(self, name):
         """ Format for global variable names """
-        return self.Identifier(name);
+        return self.Identifier(name)
 
     def LocalVariable(self, name):
         """ Format for local variable names """
-        return self.Identifier(name);
+        return self.Identifier(name)
 
     ############################################################
     #
@@ -239,7 +240,7 @@ class CKNFSourceFormatter(SourceFormatter):
         s = self.MacroName(name)
         if len(args):
             # Functional signature
-            s = "%s(";
+            s = "%s("
             for arg in args:
                 s += "%s%s" % (arg, util.comma(arg, args))
             s += ")"

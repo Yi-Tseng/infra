@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 #################################################################
 #
 #        Copyright 2013, Big Switch Networks, Inc.
@@ -23,9 +23,9 @@
 # Base generator class for C Language Objects
 #
 #################################################################
-from sourceobjectgen import *
-from cdefaultsourceformatter import *
-from cknfsourceformatter import *
+from .sourceobjectgen import *
+from .cdefaultsourceformatter import *
+from .cknfsourceformatter import *
 
 class CObjectGenerator(SourceObjectGenerator):
 
@@ -61,5 +61,5 @@ if __name__ == "__main__":
 
     sof = CObjectFactory(cm)
     for e in options.e:
-        print "/* expr: %s */" % e
-        print sof.Eval(e)
+        print("/* expr: %s */" % e)
+        print(sof.Eval(e))

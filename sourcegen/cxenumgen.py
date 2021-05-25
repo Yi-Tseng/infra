@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ## SourceObject ##
 #################################################################
 #
@@ -23,8 +23,8 @@
 #
 #################################################################
 
-from cobjectgen import *
-import util
+from .cobjectgen import *
+from . import util
 
 class CXEnumGenerator(CObjectGenerator):
     objectType = 'xenum'
@@ -45,7 +45,7 @@ class CXEnumGenerator(CObjectGenerator):
 
         s = "#ifdef %s\n" % self.name
 
-        for (k,v) in sorted(self.members.iteritems()):
+        for (k,v) in sorted(self.members.items()):
             desc = v['desc'] if 'desc' in v else ""
             s += util.fcall(self.name, "%s, \"%s\"" % (k, desc)) + "\n"
         s += "#undef %s\n" % self.name

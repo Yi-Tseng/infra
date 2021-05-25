@@ -20,7 +20,6 @@
 # Utility routines
 #
 #################################################################
-import copy
 import types
 
 def comma(member, memberList):
@@ -52,7 +51,7 @@ def listifyElements(list_):
             elif isinstance(e, list):
                 n.append(e)
             elif isinstance(e, dict):
-                for k, v in e.iteritems():
+                for k, v in e.items():
                     n.append([ k, v ])
         return n
 

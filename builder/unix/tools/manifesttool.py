@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ################################################################
 #
 #        Copyright 2013, Big Switch Networks, Inc.
@@ -147,16 +147,15 @@ if __name__ == "__main__":
                    dox=DoxManifest,)
 
     if len(sys.argv) == 1:
-        print >>sys.stderr, "Module Manifest Tool"
-        print >>sys.stderr, "usage: %s [%s|all]" % (
-            sys.argv[0], "|".join(classes.keys()))
+        print("Module Manifest Tool", file=sys.stderr)
+        print(sys.stderr, "usage: %s [%s|all]" % (
+            sys.argv[0], "|".join(classes.keys())), file=sys.stderr)
         for n in classes.keys():
-            print >>sys.stderr, "%-10s%s" % (
-                n, classes[n].__doc__)
-        print >>sys.stderr, "%-10s%s" % (
-            "all", "Generate all files.")
+            print("%-10s%s" % (n, classes[n].__doc__), file=sys.stderr)
+        print(sys.stderr, "%-10s%s" % (
+            "all", "Generate all files."), file=sys.stderr)
 
-        sys.exit(1);
+        sys.exit(1)
 
 
     targets = sys.argv[1:]

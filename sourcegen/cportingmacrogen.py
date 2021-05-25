@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ## SourceObject ##
 #################################################################
 #
@@ -25,8 +25,8 @@
 #
 #################################################################
 
-from cobjectgen import *
-import util
+from .cobjectgen import *
+from . import util
 
 class CPortingMacroGenerator(CObjectGenerator):
     objectType = 'portingmacro'
@@ -82,7 +82,7 @@ if __name__ == "__main__":
                          'memcmp' ]
              }
     m = CPortingMacroGenerator(name="module", initargs=data);
-    print m.Define();
+    print(m.Define())
 
 
 

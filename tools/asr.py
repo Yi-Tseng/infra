@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ############################################################
 #
 # AIM Syslog Reference Tool
@@ -7,15 +7,14 @@
 #
 ############################################################
 import os
+import io
 import sys
-import argparse
-import re
 import subprocess
 import logging
 import json
 import pprint
 import yaml
-import StringIO
+import gzip
 
 class AimSyslogReference(object):
 
@@ -37,7 +36,7 @@ class AimSyslogReference(object):
         self.logger.debug("Extracting %s..." % binary)
         # Get all strings from the binary
         try:
-            strings = subprocess.check_output(['strings', binary])
+            strings = subprocess.check_output(['strings', binary]).decode("utf8")
         except subprocess.CalledProcessError:
             self.logger.error("string extraction failed on file %s." % binary)
             return None
@@ -65,7 +64,7 @@ class AimSyslogReference(object):
                     self.__extract(os.path.join(root, f))
             return self.data
         else:
-            return __extract(target, accumulate=accumulate)
+            return self.__extract(target, accumulate=accumulate)
 
 
     def _asr_read(self, fname):
@@ -128,7 +127,7 @@ class AimSyslogReference(object):
         out = self.formats(fmt)
 
         if fname:
-            if type(fname) is file:
+            if type(fname) is io.TextIOWrapper:
                 fname.write(out)
             elif type(fname) is str:
                 if fname == '-' or fname == 'stdout':

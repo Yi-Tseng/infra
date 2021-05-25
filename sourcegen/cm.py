@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 #################################################################
 #
 #        Copyright 2013, Big Switch Networks, Inc.
@@ -29,7 +29,7 @@
 #
 #################################################################
 
-from util import *
+from .util import *
 import yaml
 
 class ConfigManager:
@@ -114,7 +114,7 @@ class ConfigManager:
                     # Specific object name
                     return [ name ]
 
-                for (k,v) in c.definitions[type_].iteritems():
+                for (k,v) in c.definitions[type_].items():
                     if not k.startswith('__'):
                         if name == "ALL":
                             allList.append(k)

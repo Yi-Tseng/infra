@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ## SourceObject ##
 #################################################################
 #
@@ -25,11 +25,11 @@
 #
 #################################################################
 
-from cobjectgen import *
-import util
-from cfunctiongen import *
-from cenumgen import *
-from cmacrogen import *
+from .cobjectgen import *
+from . import util
+from .cfunctiongen import *
+from .cenumgen import *
+from .cmacrogen import *
 
 class CAIMCommonLogMacroGenerator(CObjectGenerator):
     objectType = 'aim_common_log_macro'
@@ -219,13 +219,13 @@ class CAIMCustomLogMacroGenerator(CObjectGenerator):
 # Sanity Check
 #
 ###############################################################################
-import cm
+from . import cm
 
 if __name__ == "__main__":
 
     m = CAIMCommonLogMacroGenerator(flags = ["WARN", "ERROR", "INFO"])
-    print m.Header();
-    #print m.Source();
+    print(m.Header())
+    #print(m.Source())
 
 
 

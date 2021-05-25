@@ -23,15 +23,11 @@
 #
 ##################################################################
 
-import imp
 import sys
 import re
-import StringIO
 import tempfile
 import shutil
 import filecmp
-import util
-import yaml
 
 class ParseError(Exception):
     def __init__(self, value):
@@ -71,7 +67,7 @@ class SourceGenerator:
             self.outputFileName = 'stdout'
         elif outputFileName == inputFileName:
             # In place. Generate to tmpfile and check results
-            self.outputFile = tempfile.NamedTemporaryFile()
+            self.outputFile = tempfile.NamedTemporaryFile(mode='w', encoding='utf8')
             replace = True
             self.outputFileName = self.outputFile.name
         else:

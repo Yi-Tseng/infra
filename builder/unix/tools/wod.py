@@ -1,10 +1,10 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ################################################################
 #
 #        Copyright 2013, Big Switch Networks, Inc.
 #
 # Licensed under the Eclipse Public License, Version 1.0 (the
-# "License"); you may not use this file except in compliance
+# "License") you may not use this file except in compliance
 # with the License. You may obtain a copy of the License at
 #
 #        http://www.eclipse.org/legal/epl-v10.html
@@ -22,7 +22,7 @@
 #
 # This is a general purpose tool to facilitate code generation.
 # Many basic autogeneration scripts read from a file and
-# print the new file to stdout, usually of the form:
+# print-the new file to stdout, usually of the form:
 # $(TOOL) srcfile > srcfile.
 #
 # While this is easy on the script generator,
@@ -38,6 +38,8 @@ import sys
 import subprocess
 
 def write_on_diff(fname, new, msg=True):
+    if type(new) == bytes:
+        new = new.decode("utf8")
     existing = None
     if os.path.exists(fname):
         with open(fname, "r") as f:
@@ -45,10 +47,10 @@ def write_on_diff(fname, new, msg=True):
 
     if new == existing:
         if msg:
-            print "%s: no changes." % fname
+            print("%s: no changes." % fname)
     else:
         if msg:
-            print "%s: updated." % fname
+            print("%s: updated." % fname)
         with open(fname, "w") as f:
             f.write(new)
 
@@ -59,7 +61,7 @@ if __name__ == "__main__":
         raise Exception("usage: filename command [args, ...]")
 
     # the file being generated
-    fname = sys.argv[1];
+    fname = sys.argv[1]
 
     # the command that generates it
     cmd = sys.argv[2:]
@@ -67,4 +69,4 @@ if __name__ == "__main__":
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
     out, err = p.communicate()
 
-    write_on_diff(fname, out);
+    write_on_diff(fname, out)

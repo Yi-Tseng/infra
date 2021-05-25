@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ## SourceObject ##
 #################################################################
 #
@@ -25,8 +25,8 @@
 #
 #################################################################
 
-from cobjectgen import *
-import util
+from .cobjectgen import *
+from . import util
 
 class CMacroGenerator(CObjectGenerator):
     objectType = 'macro'
@@ -104,16 +104,16 @@ if __name__ == "__main__":
           }
 
     m = CMacroGenerator(initargs=d)
-    print m.Define()
+    print(m.Define())
 
     m = CMacroGenerator(name="cmg", args=[ '_a', '_b' ],
                         body = """ (_a) + (_b) + (_c) """)
-    print m.Define()
+    print(m.Define())
 
     m = CTestMacro()
-    print m.Define()
+    print(m.Define())
     print
-    print m.Call('x', 'y', 'z')
+    print(m.Call('x', 'y', 'z'))
 
 
 

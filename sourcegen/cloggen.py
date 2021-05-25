@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/
 ## SourceObject ##
 #################################################################
 #
@@ -25,11 +25,11 @@
 #
 #################################################################
 
-from cobjectgen import *
-import util
-from cfunctiongen import *
-from cenumgen import *
-from cmacrogen import *
+from .cobjectgen import *
+from . cfunctiongen import *
+from . cenumgen import *
+from . cmacrogen import *
+from . import util
 
 class CLogGenerator(CObjectGenerator):
     objectType = 'logger'
@@ -269,8 +269,8 @@ import cm
 if __name__ == "__main__":
 
     m = CLogGenerator(name="module");
-    print m.Header();
-    print m.Source();
+    print(m.Header())
+    print(m.Source())
 
 
 

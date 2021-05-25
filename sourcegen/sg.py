@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 #################################################################
 #
 #        Copyright 2013, Big Switch Networks, Inc.
@@ -25,11 +25,10 @@
 #################################################################
 
 import sourcegen
-import cobjectgen
 import argparse
-import sys
-import cm
 import os
+from . import cobjectgen
+from . import cm
 
 gParser = argparse.ArgumentParser(description='sg -- Source Generators')
 
@@ -64,14 +63,14 @@ if gArgs.i:
         of = gArgs.o
         if of is None:
             of = inf
-        print "generate: %s:" % inf,
+        print("generate: %s:" % inf,)
 
         diff = sg.Generate(inf, of)
         if inf is of:
             if diff:
-                print "\x1B[35m" + "\x1B[1m" + "updated" + "\x1B[39m" + "\x1B[0m"
+                print("\x1B[35m" + "\x1B[1m" + "updated" + "\x1B[39m" + "\x1B[0m")
             else:
-                print "\x1B[37m" + "no changes" + "\x1B[39m"
+                print("\x1B[37m" + "no changes" + "\x1B[39m")
 
 
 

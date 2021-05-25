@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ## SourceObject ##
 #################################################################
 #
@@ -25,8 +25,8 @@
 #
 #################################################################
 
-from cobjectgen import *
-import util
+from .cobjectgen import *
+from . import util
 
 class CFunctionGenerator(CObjectGenerator):
     objectType = 'function'
@@ -119,11 +119,11 @@ if __name__ == "__main__":
 
 
     f = CTestFunction()
-    print f.Prototype();
+    print(f.Prototype())
     print
-    print f.Define()
+    print(f.Define())
     print
-    print f.Call('a', 'b') + ';'
+    print(f.Call('a', 'b') + ';')
 
 
     class CTestVoidFunction(CFunctionGenerator):
@@ -136,11 +136,11 @@ if __name__ == "__main__":
 
 
     f = CTestVoidFunction()
-    print f.Prototype()
+    print(f.Prototype())
     print
-    print f.Define()
+    print(f.Define())
     print
-    print f.Call()
+    print(f.Call())
 
 
 

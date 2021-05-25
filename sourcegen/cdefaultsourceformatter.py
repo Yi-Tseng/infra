@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 #################################################################
 #
 #        Copyright 2013, Big Switch Networks, Inc.
@@ -27,9 +27,9 @@
 # Derive from this class to specify different formatting behavior
 #
 #################################################################
-from sourceformatter import *
+from .sourceformatter import *
+from . import util
 import re
-import util
 
 class CDefaultSourceFormatter(SourceFormatter):
 

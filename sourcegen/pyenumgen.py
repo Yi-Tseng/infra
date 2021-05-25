@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 ## SourceObject ##
 #################################################################
 #
@@ -25,7 +25,7 @@
 # Simple WIP
 #
 #################################################################
-from cenumgen import *
+from .cenumgen import *
 
 import re
 
@@ -105,4 +105,4 @@ if __name__ == "__main__":
     e = PyEnumGenerator(name="testEnum", members=[ ['member1'], ['member2'],
                                                   ['member3']])
 
-    print e.Define()
+    print(e.Define())
